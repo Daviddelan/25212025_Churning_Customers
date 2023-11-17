@@ -70,6 +70,8 @@ customers = pd.read_csv('/content/drive/MyDrive/Colab Notebooks/CustomerChurn_da
 """#**Now I would check to see the structure of my whole dataset**
 
 #**Understanding the relationship between the variables in my dataset**
+
+##*Carring out EDA to understand my dataset and submit
 """
 
 variables_to_draw = []
@@ -93,10 +95,13 @@ for var in variables_to_draw:
     plt.ylabel('Churn Rate')
     plt.show()
 
-# Assuming 'variables_to_draw' is a list of your variables and 'customers' is your DataFrame
+"""From this, I can conclude that customers who had no dependents were more likely to churn as compared to others who did not have dependents. I can also coclude that the customers are likely to churn when they do not have services like online backup and device protection
+
+"""
+
 num_variables = len(variables_to_draw)
-n_rows = (num_variables + 1) // 2  # Determine the number of rows needed for the subplots
-fig, axes = plt.subplots(n_rows, 2, figsize=(18, n_rows * 6))  # Adjust the size as needed
+n_rows = (num_variables + 1) // 2
+fig, axes = plt.subplots(n_rows, 2, figsize=(18, n_rows * 6))
 
 # Flatten the axes array for easy iteration
 axes = axes.flatten()
@@ -135,6 +140,8 @@ import seaborn as sns
 
 # Visualizing relationships between features
 sns.pairplot(data=customers, hue='Churn')
+
+"""From this I can easily conclude and pick the variables and columns that have a high correlation with churn."""
 
 non_categorical_variable_to_use = []
 for col in customers.columns:
@@ -277,6 +284,8 @@ plt.xticks(range(X.shape[1]), X.columns[sorted_indices], rotation=90)
 plt.tight_layout()
 plt.show()
 
+"""Picked the top 15 features because they had the highest correlation."""
+
 # Get the top 15 most important features
 top_features_number = 15
 top_features = [X.columns[indices[i]] for i in range(top_features_number)]
@@ -292,7 +301,10 @@ X = pd.DataFrame(X,columns = customers_churned.columns)
 y = encoded_customers["Churn"]
 X
 
-"""#**Model Training**"""
+"""#**Model Training**
+
+Taking care of my data because it was a bit imbalanced.
+"""
 
 from imblearn.over_sampling import SMOTE
 from sklearn.model_selection import train_test_split
@@ -439,6 +451,8 @@ y_pred = best_model.predict(X_test)
 auc_score_retest = roc_auc_score(y_test, y_pred)
 print("Retest AUC Score: ", auc_score_retest)
 
+"""Saving my models"""
+
 with open('churning_model.pkl', 'wb') as file:
     pickle.dump(best_model, file)
 
@@ -450,6 +464,8 @@ with open('onehot_encoder.pkl', 'wb') as file:
 
 with open('label_encoder.pkl', 'wb') as file:
     pickle.dump(label_encoder, file)
+
+"""Downloading the models I would use in the deployment."""
 
 from google.colab import files
 files.download('churning_model.pkl')
