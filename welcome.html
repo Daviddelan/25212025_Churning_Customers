@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Here Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        video {
+            position: fixed;
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .info-form {
+            position: absolute; /* Changed from relative to absolute */
+            top: 100%; /* Center the form vertically */
+            left: 50%; /* Center the form horizontally */
+            transform: translate(-50%, -50%); /* Adjust to center the form exactly */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+            padding: 30px 60px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            width: 50%; /* Adjust width as needed */
+            max-width: none;
+            text-align: center;
+            margin: auto;
+            overflow-y: 50%;
+            z-index: 2; /* Ensure it's above the video */
+        }
+
+
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            text-align: left; /* Align the text to the left */
+            color: #000; /* Change the color to black if needed */
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+
+        form select {
+            display: block;
+            width: calc(100% - 30px); /* Adjust width to account for padding */
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            border: 1px solid #ddd; /* Set border color to match the image */
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            -webkit-appearance: none; /* Removes default styling on iOS */
+            -moz-appearance: none; /* Removes default styling on Firefox */
+            appearance: none; /* Removes default styling */
+            background-color: #fff; /* Set the background color to white */
+            position: relative;
+            background-image: url('data:image/png;base64,...'); /* Add your own down arrow icon in base64 format */
+            background-repeat: no-repeat;
+            background-position: right 10px top 50%; /* Adjust the position of the icon */
+            background-size: 12px; /* Adjust the size of the icon */
+            text-align: left; /* Align text to the right */
+        }
+
+        form select:focus {
+            border-color: #4CAF50;
+        }
+
+        form input {
+            display: block;
+            width: 90%;
+            margin-bottom: 20px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        form input:focus {
+            border-color: #4CAF50;
+        }
+
+        input[type="submit"] {
+            background-color: #3b55e7;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        #logoContainer {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        #logoContainer img {
+            width: 120px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            box-shadow: none;
+        }
+
+        .info-form h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #21339b;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="info-form">
+        <div id="logoContainer">
+            <img src="/static/logo1.png" alt="Site Logo">
+        </div>
+
+
+
+        <h2>Customer Information</h2>
+        <form method="post" action="/submit">
+            <label for="TotalCharges">Total Charges:</label>
+            <input type="number" id="value" name="value" placeholder="Enter the total charges" required>
+
+            <label for="age">Monthly Charges:</label>
+            <input type="number" id="age" name="age" placeholder="Enter the monthly charges" required>
+
+            <label for="releaseClause"> Tenure :</label>
+            <input type="number" id="releaseClause" name="releaseClause" placeholder="Enter the tenure" required>
+
+            <label for="contract">Contract:</label>
+            <select id="contract" name="contract" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Month-to-month">Month-to-month</option>
+                <option value="One year">One year</option>
+                <option value="Two year">Two year</option>
+            </select>
+
+            <label for="paymentMethod">Payment Method:</label>
+            <select id="paymentMethod" name="paymentMethod" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Electronic check">Electronic check</option>
+                <option value="Mailed check">Mailed check</option>
+                <option value="Bank transfer (automatic)">Bank transfer (automatic)</option>
+                <option value="Credit card (automatic)">Credit card (automatic)</option>
+            </select>
+
+
+            <label for="onlineSecurity">Online Security:</label>
+            <select id="onlineSecurity" name="onlineSecurity" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+
+            <label for="TechSupport">Tech Support : </label>
+            <select id="TechSupport" name="TechSupport" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+
+
+            <label for="internetService">Internet Service:</label>
+            <select id="internetService" name="internetService" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="DSL">DSL</option>
+                <option value="Fiber optic">Fiber optic</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="onlineBackup">Online Backup:</label>
+            <select id="onlineBackup" name="onlineBackup" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+
+
+            <label for="paperlessBilling">Paperless Billing:</label>
+            <select id="paperlessBilling" name="paperlessBilling" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <label for="partner">Partner:</label>
+            <select id="partner" name="partner" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>            
+
+            <label for="multipleLines">Multiple Lines:</label>
+            <select id="multipleLines" name="multipleLines" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No phone service">No phone service</option>
+            </select>
+
+
+            <label for="deviceProtection">Device Protection:</label>
+            <select id="deviceProtection" name="deviceProtection" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="No internet service">No internet service</option>
+            </select>
+
+            <label for="seniorCitizen">Senior Citizen:</label>
+            <select id="seniorCitizen" name="seniorCitizen" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <input type="submit" value="Submit Info">
+        </form>
+    </div>
+
+    <video autoplay muted loop id="bgVideo">
+        <source src="/static/background2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
